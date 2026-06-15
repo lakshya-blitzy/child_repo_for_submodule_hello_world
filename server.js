@@ -24,7 +24,6 @@ const http = require('http');
  * Source: server.js:L3
  */
 const hostname = '127.0.0.1';
-
 /**
  * TCP port the server listens on. Hard-coded (not configurable via environment
  * variables). The byte-identical superproject server uses this same port, so the two
