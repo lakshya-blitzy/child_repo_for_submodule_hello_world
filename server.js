@@ -7,9 +7,6 @@
  * identical `200 OK` plain-text "Hello, World!\n" payload. This is a deliberate
  * catch-all: there is no routing, no 404 handling, and no error handling.
  *
- * This file is byte-identical to the superproject (parent) `server.js`; it is the
- * runtime entry point of the `child_repo_for_submodule_hello_world` submodule.
- *
  * Run with: `node server.js`
  *
  * Source: server.js:L1-L14
