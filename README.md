@@ -1,6 +1,6 @@
 # child_repo_for_submodule_hello_world
 
-A standalone, minimal Node.js standard-library HTTP "Hello, World!" server — byte-identical to the superproject's `server.js`.
+A standalone, minimal Node.js standard-library HTTP "Hello, World!" server — byte-identical to the superproject's `server.js`. Source: server.js:L1-L14.
 
 ## Table of Contents
 
@@ -25,12 +25,12 @@ The `server.js` in this repository is **byte-identical** to the superproject's `
 ## Prerequisites
 
 - **Node.js** — any maintained LTS release that supports CommonJS (`require`) and the built-in `http` module. No specific version is pinned: this repository has **no** `package.json` and **no** `.nvmrc`, so do not assume a specific major version is required. Source: server.js:L1.
-- **Git** — required to materialize this repository as a submodule of the superproject.
+- **Git** — required to materialize this repository as a submodule of the superproject. Source: .gitmodules.
 - **No `npm install`** — there are **zero** third-party dependencies; the only dependency is the Node.js built-in `http` module, so there is nothing to install. Source: server.js:L1.
 
 ## Running the Server
 
-From the repository root, start the server directly with Node.js:
+From the repository root, start the server directly with the Node.js runtime — `server.js` is a single, self-contained script that needs no build step or dependency installation. Source: server.js:L1-L14.
 
 ```bash
 node server.js
@@ -48,14 +48,14 @@ Source: server.js:L13.
 
 The server exposes a single **catch-all** HTTP responder — there is no routing, no separate endpoints, and no `404` handling. Source: server.js:L6-L10.
 
-| Aspect | Value |
-|---|---|
-| Methods | ALL (any method) |
-| Paths | ALL (any path) |
-| Status | `200 OK` |
-| Content-Type | `text/plain` |
-| Body | `Hello, World!\n` |
-| Content-Length | `14` |
+| Aspect | Value | Source |
+|---|---|---|
+| Methods | ALL (any method) | server.js:L6-L10 |
+| Paths | ALL (any path) | server.js:L6-L10 |
+| Status | `200 OK` | server.js:L7 |
+| Content-Type | `text/plain` | server.js:L8 |
+| Body | `Hello, World!\n` | server.js:L9 |
+| Content-Length | `14` | server.js:L9 |
 
 **Catch-all behavior:** every request — regardless of HTTP method or URL path — converges on the exact same `200 OK` `text/plain` response with the body `Hello, World!\n`. The handler never inspects the request method, URL, headers, or body. Source: server.js:L6-L10.
 
@@ -113,13 +113,13 @@ A line-by-line walkthrough of all 14 lines of `server.js`. All line references b
 
 ## Relationship to Superproject
 
-This repository is tracked as a **Git submodule** of the parent superproject, which pins it at commit `a7b8fe55c19504b8912fe655fb390a673dbe02ae`. Its upstream URL is `https://github.com/lakshya-blitzy/child_repo_for_submodule_hello_world.git`, and it contains **no** nested submodules.
+This repository is tracked as a **Git submodule** of the parent superproject, which pins it at the originally-specified commit `a7b8fe55c19504b8912fe655fb390a673dbe02ae`. Its upstream URL is `https://github.com/lakshya-blitzy/child_repo_for_submodule_hello_world.git`, and it contains **no** nested submodules (this repository has no `.gitmodules` of its own). Source: .gitmodules.
 
-For superproject-level setup — cloning with `--recurse-submodules`, the materialization workflow, and the overall architecture — see the [superproject README](../README.md).
+For superproject-level setup — cloning with `--recurse-submodules`, the materialization workflow, and the overall architecture — see the [superproject README](../README.md). Source: .gitmodules.
 
 ## Diagram
 
-The sequence diagram below shows that all methods and all paths converge on one fixed response. Source: server.js:L6-L10.
+The sequence diagram below shows that all methods and all paths converge on one fixed response, served from the loopback bind address `127.0.0.1:3000` shown in the diagram. Source: server.js:L3-L4 (bind address and port), server.js:L6-L10 (catch-all response).
 
 ```mermaid
 sequenceDiagram
@@ -132,3 +132,4 @@ sequenceDiagram
 ## Source Citations
 
 - `child_repo_for_submodule_hello_world/server.js:L1-L14`
+- `.gitmodules` (superproject) — submodule binding metadata: path, upstream URL, originally-specified pin commit, and absence of nested submodules.
