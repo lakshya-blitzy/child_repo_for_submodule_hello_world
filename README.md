@@ -113,7 +113,7 @@ A line-by-line walkthrough of all 14 lines of `server.js`. All line references b
 
 ## Relationship to Superproject
 
-This repository is tracked as a **Git submodule** of the parent superproject, which pins it at the originally-specified commit `a7b8fe55c19504b8912fe655fb390a673dbe02ae`. Its upstream URL is `https://github.com/lakshya-blitzy/child_repo_for_submodule_hello_world.git`, and it contains **no** nested submodules (this repository has no `.gitmodules` of its own). Source: .gitmodules.
+This repository is tracked as a **Git submodule** of the parent superproject. The superproject pins it at a specific commit recorded by the superproject's **gitlink** — not in `.gitmodules`, which stores only the submodule path and URL. To see the exact pinned commit, run `git submodule status` (or `git ls-tree HEAD child_repo_for_submodule_hello_world`) from the superproject root. The upstream URL is `https://github.com/lakshya-blitzy/child_repo_for_submodule_hello_world.git`, and this repository contains **no** nested submodules (it has no `.gitmodules` of its own). Source: superproject `.gitmodules` (path and URL); superproject gitlink via `git submodule status` (pinned commit).
 
 For superproject-level setup — cloning with `--recurse-submodules`, the materialization workflow, and the overall architecture — see the [superproject README](../README.md). Source: .gitmodules.
 
@@ -132,4 +132,5 @@ sequenceDiagram
 ## Source Citations
 
 - `child_repo_for_submodule_hello_world/server.js:L1-L14`
-- `.gitmodules` (superproject) — submodule binding metadata: path, upstream URL, originally-specified pin commit, and absence of nested submodules.
+- `.gitmodules` (superproject) — submodule binding metadata: submodule **path** and upstream **URL** only; it does **not** record the pinned commit.
+- Superproject **gitlink**, via `git submodule status` / `git ls-tree HEAD child_repo_for_submodule_hello_world` — the **pinned commit** the superproject records for this submodule.
