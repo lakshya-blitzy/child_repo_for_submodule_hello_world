@@ -1,0 +1,3 @@
+[submodule "second_child_repo_for_submodule_hello_world"]
+	path = second_child_repo_for_submodule_hello_world
+	url = https://github.com/lakshya-blitzy/second_child_repo_for_submodule_hello_world.git
